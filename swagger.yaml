@@ -1,0 +1,66 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: MyStay Push API
+  description: Registration for push notifications
+  contact:
+    name: Denis Fiser
+    email: denis.fiser@mystay.cz
+    url: http://mystay.cz
+host: myadmin.mystay.cz
+basePath: /api/push/v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /register:
+    post:
+      description: |
+        register to push notification
+      operationId: registerPush
+      parameters:
+        - name: deviceId
+          in: formData
+          description: Unique device id with platform prefix, e.g. android55SDNkj-sdnjdkasd-dssankjn45er
+          required: true
+          type: string
+        - name: token
+          in: formData
+          description: FCM registration token
+          type: string
+          required: true
+        - name: hotel
+          in: formData
+          description: Hotel code e.g. vitality
+          required: true
+          type: string
+        - name: lng
+          in: formData
+          description: Desired communication language
+          type: string
+          enum: [ "en", "cs", "ar", "ru", "de", "pl" ]
+      responses:
+        200:
+          description: response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Status'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Status'
+definitions:
+  Status:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string

@@ -37,6 +37,11 @@ paths:
           description: Hotel code e.g. vitality
           required: true
           type: string
+        - name: clientId
+          in: formData
+          description: Client id
+          required: false
+          type: string
         - name: lng
           in: formData
           description: Desired communication language

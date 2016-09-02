@@ -6,8 +6,8 @@ info:
   contact:
     name: Denis Fiser
     email: denis.fiser@mystay.cz
-    url: http://mystay.cz
-host: myadmin.mystay.cz
+    url: http://dev.mystay.cz
+host: myadmin.dev.mystay.cz
 basePath: /api/push/v1
 schemes:
   - http
@@ -37,9 +37,9 @@ paths:
           description: Hotel code e.g. vitality
           required: true
           type: string
-        - name: clientId
+        - name: userId
           in: formData
-          description: Client id
+          description: User id
           required: false
           type: string
         - name: lng
